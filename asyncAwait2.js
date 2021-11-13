@@ -3,14 +3,10 @@ Recuerda que para usar .fetch() tendrás que probar el ejercicio en el navegador
 
 
 
-function getCharacters(id) {
+async function getCharacters(id) { // vuelvo la función asincrona 
 
-    // let promise = new Promise((resolve) => {
-    //     setTimeout(() => resolve("done!"), 1000)
-    // });
-
-    fetch(`https://rickandmortyapi.com/api/character/${id}`)
-        .then(res => res.json())
+    const respuesta = await fetch(`https://rickandmortyapi.com/api/character/${id}`) // espera que se ejecute la llamada a la api
+        .then(respuesta => respuesta.json())
         // segunda promesa, donde llamo toda la creación de elementos en dom con su resultado
         // await promise.
         .then(characters => creandoDomJs(characters));
